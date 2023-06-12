@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      - system:node-proxier
+      rolearn: arn:aws:iam::<your_aws_account>:role/eks_fargate_pod_role
+      username: system:node:{{SessionName}}
+  mapAccounts: |
+    - <your_aws_account>
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: default

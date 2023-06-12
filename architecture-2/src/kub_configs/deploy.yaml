@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: default
+  namespace: default
+  labels:
+    team: data
+    service: eks
+    project: architecture
+    aws-observability: enabled
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      team: data
+      service: eks
+      project: architecture
+      aws-observability: enabled
+  template:
+    metadata:
+      labels:
+        team: data
+        service: eks
+        project: architecture
+        aws-observability: enabled
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: ingest-data
+        image: <your_aws_account>.dkr.ecr.us-east-1.amazonaws.com/stack-academy-eng-dados-2023-ingest-data-repository-eks:latest
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 4Gi
+          requests:
+            cpu: 2000m
+            memory: 4Gi
+        imagePullPolicy: Always
+        env:
+          - name: sqs_queue_url
+            value: <your_queue_name>
+          - name: analytics_bucket
+            value: <your_bucket_name>

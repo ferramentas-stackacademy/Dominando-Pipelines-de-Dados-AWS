@@ -1,0 +1,16 @@
+greenlet==1.1.0
+numpy==1.22.4
+pandas==1.5.2
+SQLAlchemy==1.4.8
+python-dateutil==2.8.1
+pytz==2021.1
+scipy
+six==1.16.0
+sqlalchemy-redshift==0.8.4
+psycopg2-binary==2.9.1
+boto3==1.22.5
+botocore==1.25.5
+requests==2.27.1
+beautifulsoup4==4.9.3
+pyarrow==12.0.0
+fastparquet==2023.4.0
